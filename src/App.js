@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Person from "./Person/Person";
-import "./App.css";
+import classes from"./App.module.css";
 import Radium,{StyleRoot} from 'radium';
 
 
@@ -81,18 +81,18 @@ this.setState({persons:persons})
 					);
 					
 			}
-			let classes=[]
+			let assignedClasses=[]
 			if(this.state.persons.length<=2){
-				classes.push('red');
+				assignedClasses.push(classes.red);
 			}
 			if(this.state.persons.length<=1){
-				classes.push('bold');
+			assignedClasses.push(classes.bold);
 			}
     return (
 					<StyleRoot>
-      <div className="App">
+      <div className={classes.App}>
         <h1> Hi, I am a react app</h1>
-								<p className={classes.join(' ')}> This is really working!!</p>
+								<p className={assignedClasses.join(' ')}> This is really working!!</p>
 							<button  style={style} key= "key2" onClick={this.switchNameHandler.bind(this,'kuski')}>Switch Name</button>  
 							<button onClick={()=>this.switchNameHandler('phanti')}>Switch Name1</button>  
 							<button  style={style} key ="hey1" onClick={this.togglePersonHandler}>Toggle Persons</button>  
