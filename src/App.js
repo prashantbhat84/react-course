@@ -48,25 +48,12 @@ persons.splice(personIndex,1);
 this.setState({persons:persons})
 	}
   render() {
-			const style={
-				backgroundColor:'green',
-				color:'white',
-				font:'inherit',
-				border:" 1px solid blue",
-				padding:'8px',
-				cursor:'pointer',
-				':hover':{
-					backgroundColor:'blue',
-					color:'black'
-				}
-			}
+			
 			let persons=null;
+			let btnClass= '';
 			if(this.state.showPersons){
-				style.backgroundColor='red';
-				style[':hover']={
-					backgroundColor:'yellow',
-					color:'black'
-				}
+				btnClass=classes.Red
+				
     persons=(<div>
 					{this.state.persons.map((person,index)=>{
 						return <Person  key= {person.id}
@@ -93,9 +80,9 @@ this.setState({persons:persons})
       <div className={classes.App}>
         <h1> Hi, I am a react app</h1>
 								<p className={assignedClasses.join(' ')}> This is really working!!</p>
-							<button  style={style} key= "key2" onClick={this.switchNameHandler.bind(this,'kuski')}>Switch Name</button>  
-							<button onClick={()=>this.switchNameHandler('phanti')}>Switch Name1</button>  
-							<button  style={style} key ="hey1" onClick={this.togglePersonHandler}>Toggle Persons</button>  
+							<button className={btnClass}   key= "key2" onClick={this.switchNameHandler.bind(this,'kuski')}>Switch Name</button>  
+							<button className={btnClass} onClick={()=>this.switchNameHandler('phanti')}>Switch Name1</button>  
+							<button  className={btnClass}  key ="hey1" onClick={this.togglePersonHandler}>Toggle Persons</button>  
 					{persons}
  {/*  The above are two alternative way  of passing parameters on button click use bind because methd 2 is a bit ineffecient  */}
 								 
