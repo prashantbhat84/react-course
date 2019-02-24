@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Person from "./Person/Person";
+import Persons from "../Components/Persons/Persons";
 import classes from"./App.module.css";
 import Radium,{StyleRoot} from 'radium';
-import ErrorBoundry from './ErrorBoundry/ErrorBoundry';
+
 
 
 class App extends Component {
@@ -38,8 +38,12 @@ const person= {...this.state.persons[personIndex]};
 		this.setState({persons:persons})
 	}
 	togglePersonHandler=()=>{
+     console.log(this);
 				const doesShow= this.state.showPersons;
+				console.log(doesShow);
 				this.setState({showPersons:!doesShow})
+				console.log(doesShow);
+
 	}
 	deletePersonHandler=(personIndex)=>{
 		
@@ -53,17 +57,14 @@ this.setState({persons:persons})
 			let persons=null;
 			let btnClass= '';
 			if(this.state.showPersons){
-				btnClass=classes.Red
-				
+						
     persons=(<div>
-					{this.state.persons.map((person,index)=>{
-						return <ErrorBoundry key= {person.id}><Person  
-						name={person.name} 
-						age= {person.age}
-						changed={(event)=>this.nameChangeHandler(event,person.id)}
-						click={()=>this.deletePersonHandler(index)}/></ErrorBoundry>
-					})}
+					<Persons persons={this.state.persons}
+						clicked={this.deletePersonHandler}
+						changed={this.nameChangeHandler}
+					/>
 					
+					btnClass=classes.Red;
 					
 					</div>
 					);
